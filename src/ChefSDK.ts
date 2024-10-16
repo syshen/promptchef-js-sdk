@@ -35,11 +35,11 @@ export interface TestRunParams extends RunParams {
   variables?: Variable[];
 }
 
-export class PromptCheft {
+export class PromptChef {
   private apiKey: string;
   private client: AxiosInstance;
 
-  constructor({apiKey = process.env.CHEFT_API_KEY, baseUrl = 'https://api.promptcheft.com'}: {apiKey?: string, baseUrl?: string} = {}) {
+  constructor({apiKey = process.env.CHEF_API_KEY, baseUrl = 'https://api.promptchef.com'}: {apiKey?: string, baseUrl?: string} = {}) {
     if (!apiKey) {
       throw new Error('API Key is required');
     }
@@ -47,7 +47,7 @@ export class PromptCheft {
     this.client = axios.create({
       baseURL: baseUrl,
       headers: {
-        'CHEFT_API_KEY': this.apiKey,
+        'CHEF_API_KEY': this.apiKey,
         'Content-Type': 'application/json',
       },
     });

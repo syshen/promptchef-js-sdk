@@ -1,35 +1,35 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
-import {PromptCheft, ModelProvider} from '../src/CheftSDK';
+import {PromptChef, ModelProvider} from '../src/ChefSDK';
 
-describe('PromptCheft tests', () => {
-  const baseUrl = process.env.CHEFT_BASE_URL;
-  const apiKey = process.env.CHEFT_API_KEY;
+describe('PromptChef tests', () => {
+  const baseUrl = process.env.CHEF_BASE_URL;
+  const apiKey = process.env.CHEF_API_KEY;
 
   it('should be able to create a new instance', () => {
-    const cheft = new PromptCheft({baseUrl, apiKey});
-    expect(cheft).toBeDefined();
+    const chef = new PromptChef({baseUrl, apiKey});
+    expect(chef).toBeDefined();
   });
 
   it('should be able to get providers', async () => {
-    const cheft = new PromptCheft({baseUrl, apiKey});
-    const providers = await cheft.providers();
+    const chef = new PromptChef({baseUrl, apiKey});
+    const providers = await chef.providers();
     expect(providers).toBeDefined();
     expect(providers.providers.length).toBeGreaterThan(0);
     expect(providers.providers[0]).toBe('openai');
   });
 
   it('should be able to get models', async () => {
-    const cheft = new PromptCheft({baseUrl, apiKey});
-    const models = await cheft.models('openai');
+    const chef = new PromptChef({baseUrl, apiKey});
+    const models = await chef.models('openai');
     expect(models).toBeDefined();
     expect(models.models.length).toBeGreaterThan(0);
   });
 
   it('should be able to run a prompt', async () => {
-    const cheft = new PromptCheft({baseUrl, apiKey});
-    const run = await cheft.run({
+    const chef = new PromptChef({baseUrl, apiKey});
+    const run = await chef.run({
       projectId: 1,
       promptId: 1,
       user_message: '1 + 1 = ?',
@@ -40,8 +40,8 @@ describe('PromptCheft tests', () => {
   });
 
   it('should be able to test a prompt', async () => {
-    const cheft = new PromptCheft({baseUrl, apiKey});
-    const testRun = await cheft.testRun({
+    const chef = new PromptChef({baseUrl, apiKey});
+    const testRun = await chef.testRun({
       projectId: 1,
       promptId: 1,
       user_message: '1 + 1 = ?',

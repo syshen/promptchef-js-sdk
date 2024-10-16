@@ -1,7 +1,7 @@
 {
   "name": "promptchef-js-sdk",
   "version": "1.0.0",
-  "description": "The Cheft SDK for JavaScript",
+  "description": "The Chef SDK for JavaScript",
   "main": "index.js",
   "scripts": {
     "build": "tsc",

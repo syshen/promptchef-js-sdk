@@ -32,11 +32,11 @@ describe('PromptChef tests', () => {
     const run = await chef.run({
       projectId: 1,
       promptId: 1,
-      user_message: '1 + 1 = ?',
+      userMessage: '1 + 1 = ?',
     });
     expect(run).toBeDefined();
-    expect(run.result).toBeDefined();
-    expect(run.result.response).toBeDefined();
+    console.log(run);
+    expect(run.response).toBeDefined();
   });
 
   it('should be able to test a prompt', async () => {
@@ -44,21 +44,20 @@ describe('PromptChef tests', () => {
     const testRun = await chef.testRun({
       projectId: 1,
       promptId: 1,
-      user_message: '1 + 1 = ?',
-      system_prompt: 'You are a math teacher',
-      model_provider: ModelProvider.OPENAI,
-      model_name: 'gpt-3.5-turbo',
-      model_settings: {
+      userMessage: '1 + 1 = ?',
+      systemPrompt: 'You are a math teacher',
+      modelProvider: ModelProvider.OPENAI,
+      modelName: 'gpt-3.5-turbo',
+      modelSettings: {
         temperature: 0.5,
-        max_tokens: 1000,
-        top_p: 0.5,
-        top_k: 0.5,
-        frequency_penalty: 0.5,
-        presence_penalty: 0.5,
+        maxTokens: 1000,
+        topP: 0.5,
+        topK: 0.5,
+        frequencyPenalty: 0.5,
+        presencePenalty: 0.5,
       },
     });
     expect(testRun).toBeDefined();
-    expect(testRun.result).toBeDefined();
-    expect(testRun.result.response).toBeDefined();
+    expect(testRun.response).toBeDefined();
   });
 });

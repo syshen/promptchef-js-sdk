@@ -1,6 +1,6 @@
 {
   "name": "promptchef-js-sdk",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "description": "The Chef SDK for JavaScript",
   "main": "dist/index.js",
   "types": "index.d.ts",

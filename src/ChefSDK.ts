@@ -8,11 +8,11 @@ export enum ModelProvider {
 
 export interface ModelSettings {
   temperature?: number;
-  max_tokens?: number;
-  top_p?: number;
-  top_k?: number;
-  frequency_penalty?: number;
-  presence_penalty?: number;
+  maxTokens?: number;
+  topP?: number;
+  topK?: number;
+  frequencyPenalty?: number;
+  presencePenalty?: number;
 }
 
 export interface Variable {
@@ -23,15 +23,15 @@ export interface Variable {
 export interface RunParams {
   projectId: number;
   promptId: number;
-  user_message: string;
+  userMessage: string;
   variables?: Variable[];
 }
 
 export interface TestRunParams extends RunParams {
-  model_provider: ModelProvider;
-  model_name: string;
-  model_settings: ModelSettings;
-  system_prompt: string;
+  modelProvider: ModelProvider;
+  modelName: string;
+  modelSettings: ModelSettings;
+  systemPrompt: string;
   variables?: Variable[];
 }
 
@@ -64,10 +64,10 @@ export class PromptChef {
   }
 
   async run(params: RunParams): Promise<any> {
-    const { projectId, promptId, user_message, variables } = params;
+    const { projectId, promptId, userMessage, variables } = params;
     try {
       const response = await this.client.post(`/v1/prompt/${projectId}/${promptId}/`, {
-        user_message,
+        userMessage,
         variables,
       });
       return response.data
@@ -77,15 +77,15 @@ export class PromptChef {
   }
 
   async testRun(params: TestRunParams): Promise<any> {
-    const { projectId, promptId, user_message, variables, model_provider, model_name, model_settings, system_prompt } = params;
-    try {
+    const { projectId, promptId, userMessage, variables, modelProvider, modelName, modelSettings, systemPrompt } = params;
+    try { 
       const response = await this.client.post(`/v1/test-run/${projectId}/${promptId}/`, {
-        user_message,
+        userMessage,
         variables,
-        model_provider,
-        model_name,
-        model_settings,
-        system_prompt,
+        modelProvider,
+        modelName,
+        modelSettings,
+        systemPrompt,
       });
       return response.data
     } catch (error: any) {

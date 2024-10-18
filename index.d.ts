@@ -5,11 +5,11 @@ declare module 'promptchef-js-sdk' {
   }
   export interface ModelSettings {
     temperature?: number;
-    max_tokens?: number;
-    top_p?: number;
-    top_k?: number;
-    frequency_penalty?: number;
-    presence_penalty?: number;
+    maxTokens?: number;
+    topP?: number;
+    topK?: number;
+    frequencyPenalty?: number;
+    presencePenalty?: number;
   }
   export interface Variable {
     name: string;
@@ -18,18 +18,18 @@ declare module 'promptchef-js-sdk' {
   export interface RunParams {
     projectId: number;
     promptId: number;
-    user_message: string;
+    userMessage: string;
     variables?: Variable[];
   }
   export interface TestRunParams extends RunParams {
-    model_provider: ModelProvider;
-    model_name: string;
-    model_settings: ModelSettings;
-    system_prompt: string;
+    modelProvider: ModelProvider;
+    modelName: string;
+    modelSettings: ModelSettings;
+    systemPrompt: string;
     variables?: Variable[];
   }
   export class PromptChef {
-    constructor({ apiKey: string, baseUrl: string });
+    constructor({ apiKey, baseUrl }: { apiKey?: string, baseUrl?: string });
     testRun(params: TestRunParams): Promise<any>;
     run(params: RunParams): Promise<any>;
   }

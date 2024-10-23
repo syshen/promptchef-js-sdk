@@ -1,35 +1,32 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
-import {PromptChef, ModelProvider} from '../src/ChefSDK';
+import {PromptDashIO, ModelProvider} from '../src/DashIOSDK';
 
-describe('PromptChef tests', () => {
-  const baseUrl = process.env.CHEF_BASE_URL;
-  const apiKey = process.env.CHEF_API_KEY;
-
+describe('PromptDash tests', () => {
   it('should be able to create a new instance', () => {
-    const chef = new PromptChef({baseUrl, apiKey});
-    expect(chef).toBeDefined();
+    const dash = new PromptDashIO({});
+    expect(dash).toBeDefined();
   });
 
   it('should be able to get providers', async () => {
-    const chef = new PromptChef({baseUrl, apiKey});
-    const providers = await chef.providers();
+    const dash = new PromptDashIO({});
+    const providers = await dash.providers();
     expect(providers).toBeDefined();
     expect(providers.providers.length).toBeGreaterThan(0);
     expect(providers.providers[0]).toBe('openai');
   });
 
   it('should be able to get models', async () => {
-    const chef = new PromptChef({baseUrl, apiKey});
-    const models = await chef.models('openai');
+    const dash = new PromptDashIO({});
+    const models = await dash.models('openai');
     expect(models).toBeDefined();
     expect(models.models.length).toBeGreaterThan(0);
   });
 
   it('should be able to run a prompt', async () => {
-    const chef = new PromptChef({baseUrl, apiKey});
-    const run = await chef.run({
+    const dash = new PromptDashIO({});
+    const run = await dash.run({
       projectId: 1,
       promptId: 1,
       userMessage: '1 + 1 = ?',
@@ -40,8 +37,8 @@ describe('PromptChef tests', () => {
   });
 
   it('should be able to test a prompt', async () => {
-    const chef = new PromptChef({baseUrl, apiKey});
-    const testRun = await chef.testRun({
+    const dash = new PromptDashIO({});
+    const testRun = await dash.testRun({
       projectId: 1,
       promptId: 1,
       userMessage: '1 + 1 = ?',

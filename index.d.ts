@@ -27,8 +27,9 @@ declare module 'promptchef-js-sdk' {
     modelSettings: ModelSettings;
     systemPrompt: string;
     variables?: Variable[];
+    outputFormat?: string;
   }
-  export class PromptChef {
+  export class PromptDashIO {
     constructor({ apiKey, baseUrl }: { apiKey?: string, baseUrl?: string });
     testRun(params: TestRunParams): Promise<any>;
     run(params: RunParams): Promise<any>;

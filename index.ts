@@ -1,1 +1,1 @@
-export * from './src/ChefSDK';
+export * from './src/DashIOSDK';

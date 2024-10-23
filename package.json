@@ -1,7 +1,7 @@
 {
-  "name": "promptchef-js-sdk",
-  "version": "1.0.7",
-  "description": "The Chef SDK for JavaScript",
+  "name": "promptdash-js-sdk",
+  "version": "1.0.8",
+  "description": "The Dash SDK for JavaScript",
   "main": "dist/index.js",
   "types": "index.d.ts",
   "scripts": {

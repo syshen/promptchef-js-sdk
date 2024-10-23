@@ -33,13 +33,19 @@ export interface TestRunParams extends RunParams {
   modelSettings: ModelSettings;
   systemPrompt: string;
   variables?: Variable[];
+  outputFormat?: string;
 }
 
-export class PromptChef {
+export class PromptDashIO {
   private apiKey: string;
   private client: AxiosInstance;
 
-  constructor({apiKey = process.env.CHEF_API_KEY, baseUrl = 'https://api.promptchef.com'}: {apiKey?: string, baseUrl?: string} = {}) {
+  constructor(
+    {
+      apiKey = process.env.DASH_API_KEY,
+      baseUrl = process.env.DASH_BASE_URL || 'https://api.promptdash.io',
+    }: {apiKey?: string, baseUrl?: string},
+  ) {
     if (!apiKey) {
       throw new Error('API Key is required');
     }
@@ -47,7 +53,7 @@ export class PromptChef {
     this.client = axios.create({
       baseURL: baseUrl,
       headers: {
-        'CHEF_API_KEY': this.apiKey,
+        'DASH_API_KEY': this.apiKey,
         'Content-Type': 'application/json',
       },
     });
@@ -77,8 +83,18 @@ export class PromptChef {
   }
 
   async testRun(params: TestRunParams): Promise<any> {
-    const { projectId, promptId, userMessage, variables, modelProvider, modelName, modelSettings, systemPrompt } = params;
-    try { 
+    const {
+      projectId,
+      promptId,
+      userMessage,
+      variables,
+      modelProvider,
+      modelName,
+      modelSettings,
+      systemPrompt,
+      outputFormat,
+    } = params;
+    try {
       const response = await this.client.post(`/v1/test-run/${projectId}/${promptId}/`, {
         userMessage,
         variables,
@@ -86,6 +102,7 @@ export class PromptChef {
         modelName,
         modelSettings,
         systemPrompt,
+        outputFormat,
       });
       return response.data
     } catch (error: any) {

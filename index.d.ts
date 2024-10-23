@@ -1,4 +1,4 @@
-declare module 'promptchef-js-sdk' {
+declare module 'promptdash-js-sdk' {
   export enum ModelProvider {
     OPENAI = 'openai',
     CLAUDE = 'claude',

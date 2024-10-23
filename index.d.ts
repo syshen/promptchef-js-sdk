@@ -26,7 +26,6 @@ declare module 'promptdash-js-sdk' {
     modelName: string;
     modelSettings: ModelSettings;
     systemPrompt: string;
-    variables?: Variable[];
     outputFormat?: string;
   }
   export class PromptDashIO {

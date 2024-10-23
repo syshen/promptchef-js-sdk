@@ -32,7 +32,6 @@ export interface TestRunParams extends RunParams {
   modelName: string;
   modelSettings: ModelSettings;
   systemPrompt: string;
-  variables?: Variable[];
   outputFormat?: string;
 }
 
@@ -87,7 +86,6 @@ export class PromptDashIO {
       projectId,
       promptId,
       userMessage,
-      variables,
       modelProvider,
       modelName,
       modelSettings,
@@ -97,7 +95,6 @@ export class PromptDashIO {
     try {
       const response = await this.client.post(`/v1/test-run/${projectId}/${promptId}/`, {
         userMessage,
-        variables,
         modelProvider,
         modelName,
         modelSettings,

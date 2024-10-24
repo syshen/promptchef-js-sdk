@@ -43,7 +43,7 @@ export class PromptDashIO {
     {
       apiKey = process.env.DASH_API_KEY,
       baseUrl = process.env.DASH_BASE_URL || 'https://api.promptdash.io',
-    }: {apiKey?: string, baseUrl?: string},
+    }: {apiKey?: string, baseUrl?: string} = {},
   ) {
     if (!apiKey) {
       throw new Error('API Key is required');

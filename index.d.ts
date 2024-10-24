@@ -29,7 +29,7 @@ declare module 'promptdash-js-sdk' {
     outputFormat?: string;
   }
   export class PromptDashIO {
-    constructor({ apiKey, baseUrl }: { apiKey?: string, baseUrl?: string });
+    constructor({ apiKey, baseUrl }: { apiKey?: string, baseUrl?: string } = {});
     testRun(params: TestRunParams): Promise<any>;
     run(params: RunParams): Promise<any>;
   }

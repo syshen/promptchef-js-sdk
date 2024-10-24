@@ -2344,13 +2344,6 @@ pretty-format@^29.0.0, pretty-format@^29.7.0:
     ansi-styles "^5.0.0"
     react-is "^18.0.0"
 
-promptchef-js-sdk@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/promptchef-js-sdk/-/promptchef-js-sdk-1.0.5.tgz#f686c10ea8af6510839b4a5baa92bedaed0300a7"
-  integrity sha512-9dItOOcIV133SGjaq8QK0rWSllNfmbQfrZETQbO20hlUwvlo2f+Oe0QOd5VFSn0phJqtvV+qzshVOOkpSosfoA==
-  dependencies:
-    axios "^1.7.7"
-
 prompts@^2.0.1:
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/prompts/-/prompts-2.4.2.tgz#7b57e73b3a48029ad10ebd44f74b01722a4cb069"

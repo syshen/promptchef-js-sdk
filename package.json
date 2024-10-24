@@ -1,6 +1,6 @@
 {
   "name": "promptdash-js-sdk",
-  "version": "1.0.10",
+  "version": "1.0.12",
   "description": "The Dash SDK for JavaScript",
   "main": "dist/index.js",
   "types": "index.d.ts",
